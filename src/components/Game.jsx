@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "./Card";
 
 export default function Game({ characters }) {
   const [score, setScore] = useState(0);
@@ -12,12 +13,7 @@ export default function Game({ characters }) {
       </div>
       <div className="main">
         {characters.map((char) => {
-          return (
-            <div key={char.key}>
-              <img src={char.url} />
-              <div>{char.name}</div>
-            </div>
-          );
+          return <Card character={char} key={char.key}></Card>;
         })}
       </div>
     </div>

@@ -26,6 +26,7 @@ export default function Loading() {
           className="loading-gif"
           initial={{ height: 0, width: 0 }}
           animate={{ height: 200, width: 200 }}
+          exit={{ height: 2000, width: 2000, opacity: 0 }}
           transition={{ duration: 0.3 }}
         ></m.img>
       </div>
