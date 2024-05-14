@@ -1,3 +1,5 @@
+import "../styles/game.css";
+
 export default function Card({ character }) {
   return (
     <div className="card-container">

@@ -1,0 +1,51 @@
+body,
+html,
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 3rem;
+    gap: 1rem;
+}
+
+.all-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    width: 5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    gap: .5rem;
+    border: 2px solid black;
+}
+
+.card-container:hover {
+    box-shadow: 0px 0px 10px lightblue;
+}
+
+.card-image {
+    height: 10rem;
+    width: 5rem;
+}
+
+.card-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
