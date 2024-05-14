@@ -1,8 +1,9 @@
 import Lobby from "./components/Lobby";
 import Loading from "./components/Loading";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Game from "./components/Game";
+import { v4 as uuidv4 } from "uuid";
 
 export default function App() {
   const [loading, setLoading] = useState(false);
@@ -13,16 +14,30 @@ export default function App() {
     setLoading((prevLoading) => !prevLoading);
   }
 
+  function transformObject(object) {
+    let filteredChars = [];
+    for (let i = 0; i < 9; i++) {
+      filteredChars.push({
+        url: object[i].image,
+        name: object[i].name,
+        key: uuidv4(),
+        checked: false,
+      });
+    }
+    return filteredChars;
+  }
+
   async function fetchChars() {
     toggleLoading();
     console.log("start");
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await fetch("https://rickandmortyapi.com/api/character");
-      const characters = await response.json();
-      setChars(characters.results);
+      const responseJson = await response.json();
+      console.log(responseJson.results);
+      setChars(transformObject(responseJson.results));
+
       toggleLoading();
-      return characters;
     } catch (error) {
       toggleLoading();
       throw new Error(error);
