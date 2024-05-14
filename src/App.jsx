@@ -2,10 +2,17 @@ import Lobby from "./components/Lobby";
 import Loading from "./components/Loading";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { v4 as uuidv4 } from "uuid";
+import Game from "./components/Game";
 
 export default function App() {
   const [loading, setLoading] = useState(false);
+
+  async function fetchChars() {
+    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const characters = await response.results;
+    return characters;
+  }
+  fetchChars();
 
   return (
     <AnimatePresence initial={false} mode="wait">
