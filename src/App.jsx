@@ -45,11 +45,11 @@ export default function App() {
   }
 
   return (
-    <AnimatePresence initial={false} mode="wait">
+    <AnimatePresence initial={false} mode="wait" className="lol">
       {loading ? (
         <Loading key={1}></Loading>
       ) : playGame ? (
-        <Game characters={chars}></Game>
+        <Game charObject={chars}></Game>
       ) : (
         <Lobby
           key={2}

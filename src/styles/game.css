@@ -35,7 +35,7 @@ html,
 }
 
 .card-container:hover {
-    box-shadow: 0px 0px 10px lightblue;
+    box-shadow: 0px 0px 1rem lightblue;
 }
 
 .card-image {
