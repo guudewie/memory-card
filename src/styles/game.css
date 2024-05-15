@@ -32,6 +32,7 @@ html,
     overflow: hidden;
     gap: .5rem;
     border: 2px solid black;
+
 }
 
 .card-container:hover {

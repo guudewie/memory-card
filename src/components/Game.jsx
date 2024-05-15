@@ -23,6 +23,7 @@ export default function Game({ charObject }) {
     } else {
       handleBadMove();
     }
+    shuffle();
   }
 
   function handleGoodMove() {
@@ -43,10 +44,24 @@ export default function Game({ charObject }) {
     return charObj.map((char) => ({ ...char, checked: false }));
   }
 
+  function shuffle() {
+    let oldChars = characters;
+    let newChars = [];
+
+    let getRandom = () => Math.floor(Math.random() * oldChars.length);
+
+    while (oldChars.length > 0) {
+      let random = getRandom();
+      newChars.push(oldChars[random]);
+      oldChars.splice(random, 1);
+    }
+    setCharacters(newChars);
+  }
+
   return (
     <div className="game-container">
       <div className="header">
-        <div className="score">Score :{score}</div>
+        <div className="score">Score: {score}</div>
         <div className="highscore">Highscore: {highscore}</div>
       </div>
       <div className="all-card-container">
