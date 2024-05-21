@@ -45,7 +45,7 @@ export default function App() {
   }
 
   return (
-    <AnimatePresence initial={false} mode="wait" className="lol">
+    <AnimatePresence initial={false} mode="wait">
       {loading ? (
         <Loading key={1}></Loading>
       ) : playGame ? (

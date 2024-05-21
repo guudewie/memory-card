@@ -17,7 +17,7 @@ export default function Game({ charObject }) {
     });
 
     setCharacters(updatedCharacters);
-
+    console.log(correctClick);
     if (correctClick) {
       handleGoodMove();
     } else {
@@ -41,11 +41,11 @@ export default function Game({ charObject }) {
   }
 
   function uncheckChars(charObj) {
-    return charObj.map((char) => ({ ...char, checked: false }));
+    return charObj.map((char) => (char.checked = false));
   }
 
   function shuffle() {
-    let oldChars = characters;
+    let oldChars = [...characters];
     let newChars = [];
 
     let getRandom = () => Math.floor(Math.random() * oldChars.length);
