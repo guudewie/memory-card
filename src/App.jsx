@@ -27,16 +27,25 @@ export default function App() {
     return filteredChars;
   }
 
+  function getNumbersString() {
+    let numbers = Array.from({ length: 9 }, () =>
+      Math.floor(Math.random() * 826),
+    );
+    return numbers.toString();
+  }
+
   async function fetchChars() {
     toggleLoading();
-    console.log("start");
+    let url = "https://rickandmortyapi.com/api/character/" + getNumbersString();
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      const response = await fetch("https://rickandmortyapi.com/api/character");
+      const response = await fetch(url);
       const responseJson = await response.json();
-      console.log(responseJson.results);
-      setChars(transformObject(responseJson.results));
-
+      setChars(
+        transformObject(
+          responseJson.results ? responseJson.results : responseJson,
+        ),
+      );
       toggleLoading();
     } catch (error) {
       toggleLoading();
