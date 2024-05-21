@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Neucha&display=swap');
+
 body,
 html,
 #root {
@@ -16,22 +18,21 @@ html,
 
 .all-card-container {
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 1rem;
-
+    gap: 2rem;
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 10rem;
-    width: 5rem;
+    height: 18rem;
+    width: 10rem;
     border-radius: 1rem;
     overflow: hidden;
-    gap: .5rem;
-    border: 2px solid black;
+    border: 2px solid rgb(72, 72, 72);
 
 }
 
@@ -40,8 +41,8 @@ html,
 }
 
 .card-image {
-    height: 10rem;
-    width: 5rem;
+    height: 80%;
+    
 }
 
 .card-name {
@@ -49,4 +50,7 @@ html,
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: Neucha, sans-serif;
+    font-size: 1.5rem;
+    height: 100%;
 }
