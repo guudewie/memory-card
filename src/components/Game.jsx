@@ -75,10 +75,11 @@ export default function Game({ charObject, shuffleCards }) {
   }
 
   function getNumbersString() {
-    let numbers = Array.from({ length: 9 }, () =>
-      Math.floor(Math.random() * 826),
-    );
-    return numbers.toString();
+    let numbers = new Set();
+    while (numbers.size < 9) {
+      numbers.add(Math.floor(Math.random() * 826));
+    }
+    return Array.from(numbers).toString();
   }
 
   async function fetchChars() {
