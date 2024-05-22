@@ -27,19 +27,13 @@ export default function App() {
     return filteredChars;
   }
 
-  function getNumbersString() {
-    let numbers = Array.from({ length: 9 }, () =>
-      Math.floor(Math.random() * 826),
-    );
-    return numbers.toString();
-  }
-
   async function fetchChars() {
     toggleLoading();
-    let url = "https://rickandmortyapi.com/api/character/" + getNumbersString();
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      const response = await fetch(url);
+      const response = await fetch(
+        "https://rickandmortyapi.com/api/character/",
+      );
       const responseJson = await response.json();
       setChars(
         transformObject(
@@ -58,7 +52,7 @@ export default function App() {
       {loading ? (
         <Loading key={1}></Loading>
       ) : playGame ? (
-        <Game charObject={chars}></Game>
+        <Game charObject={chars} shuffleCards={fetchChars}></Game>
       ) : (
         <Lobby
           key={2}

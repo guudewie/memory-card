@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Card from "./Card";
 import Modal from "./Modal";
+import { v4 as uuidv4 } from "uuid";
 
-export default function Game({ charObject }) {
+export default function Game({ charObject, shuffleCards }) {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [characters, setCharacters] = useState(charObject);
@@ -60,6 +61,38 @@ export default function Game({ charObject }) {
     setCharacters(newChars);
   }
 
+  function transformObject(object) {
+    let filteredChars = [];
+    for (let i = 0; i < 9; i++) {
+      filteredChars.push({
+        url: object[i].image,
+        name: object[i].name,
+        key: uuidv4(),
+        checked: false,
+      });
+    }
+    return filteredChars;
+  }
+
+  function getNumbersString() {
+    let numbers = Array.from({ length: 9 }, () =>
+      Math.floor(Math.random() * 826),
+    );
+    return numbers.toString();
+  }
+
+  async function fetchChars() {
+    let url = "https://rickandmortyapi.com/api/character/" + getNumbersString();
+    try {
+      const response = await fetch(url);
+      const responseJson = await response.json();
+      setCharacters(transformObject(responseJson));
+    } catch (error) {
+      throw new Error(error);
+    }
+    setbadMoveModalOpen(false);
+  }
+
   return (
     <div className="game-container">
       <div className="header">
@@ -84,6 +117,7 @@ export default function Game({ charObject }) {
           highscore={highscore}
           score={score}
           closeModal={() => setbadMoveModalOpen(false)}
+          shuffleCards={() => fetchChars()}
         ></Modal>
       )}
     </div>
