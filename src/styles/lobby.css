@@ -24,7 +24,8 @@ body,
 }
 
 
-.start-game {
+.start-game,
+.shuffle-game {
   align-self: center;
   background-color: #fff;
   background-image: none;
@@ -55,12 +56,14 @@ body,
   touch-action: manipulation;
 }
 
-.start-game:hover {
+.start-game:hover,
+.shuffle-game:hover {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
 }
 
-.start-game:focus {
+.start-game:focus,
+.shuffle-game:focus {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
 

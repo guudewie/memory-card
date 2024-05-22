@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Card from "./Card";
+import Modal from "./Modal";
 
 export default function Game({ charObject }) {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [characters, setCharacters] = useState(charObject);
+  const [badMoveModalOpen, setbadMoveModalOpen] = useState(false);
 
   function handleCardClick(id) {
     let correctClick = false;
@@ -37,6 +39,7 @@ export default function Game({ charObject }) {
     }
     let updatedCharacters = uncheckChars(characters);
     setCharacters(updatedCharacters);
+    setbadMoveModalOpen(true);
   }
 
   function uncheckChars(charObj) {
@@ -76,6 +79,13 @@ export default function Game({ charObject }) {
           );
         })}
       </div>
+      {badMoveModalOpen && (
+        <Modal
+          highscore={highscore}
+          score={score}
+          closeModal={() => setbadMoveModalOpen(false)}
+        ></Modal>
+      )}
     </div>
   );
 }
