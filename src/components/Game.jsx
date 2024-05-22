@@ -17,7 +17,6 @@ export default function Game({ charObject }) {
     });
 
     setCharacters(updatedCharacters);
-    console.log(correctClick);
     if (correctClick) {
       handleGoodMove();
     } else {
@@ -63,6 +62,7 @@ export default function Game({ charObject }) {
       <div className="header">
         <div className="score">Score: {score}</div>
         <div className="highscore">Highscore: {highscore}</div>
+        <div className="rules">Click each card only Ones!</div>
       </div>
       <div className="all-card-container">
         {characters.map((char) => {
