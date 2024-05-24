@@ -33,13 +33,12 @@ export default function Game({ charObject, shuffleCards }) {
   }
 
   function handleBadMove() {
-    setScore(0);
+    //setScore(0);
+    score > highscore ? setHighscore(score) : null;
 
-    if (score > highscore) {
-      setHighscore(score);
-    }
     let updatedCharacters = uncheckChars(characters);
     setCharacters(updatedCharacters);
+
     setbadMoveModalOpen(true);
   }
 
@@ -119,6 +118,7 @@ export default function Game({ charObject, shuffleCards }) {
           score={score}
           closeModal={() => setbadMoveModalOpen(false)}
           shuffleCards={() => fetchChars()}
+          setScore={() => setScore(0)}
         ></Modal>
       )}
     </div>

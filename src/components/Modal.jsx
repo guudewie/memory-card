@@ -1,6 +1,12 @@
 import "../styles/modal.css";
 
-export default function Modal({ score, highscore, closeModal, shuffleCards }) {
+export default function Modal({
+  score,
+  highscore,
+  closeModal,
+  shuffleCards,
+  setScore,
+}) {
   return (
     <div className="modal">
       <img
@@ -12,10 +18,20 @@ export default function Modal({ score, highscore, closeModal, shuffleCards }) {
         <div className="modal-score">Highscore: {highscore}</div>
       </div>
       <div className="button-container">
-        <div className="start-game" onClick={closeModal}>
+        <div
+          className="start-game"
+          onClick={() => {
+            closeModal(), setScore();
+          }}
+        >
           Play Again
         </div>
-        <div className="shuffle-game" onClick={shuffleCards}>
+        <div
+          className="shuffle-game"
+          onClick={() => {
+            shuffleCards(), setScore();
+          }}
+        >
           Shuffle Characters
         </div>
       </div>
